@@ -3,7 +3,7 @@ require "tempfile"
 module RSpec
   module Support
     def self.silently(cmd, via: :system)
-      out    = Tempfile.new("dry-web-roda-out")
+      out    = Tempfile.new("dry-web-web_pipe-out")
       # RSpec::Support::Env.env
       result = ::Kernel.__send__(via, cmd, out: out.path, err: out.path)
 

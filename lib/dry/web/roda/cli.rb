@@ -4,7 +4,7 @@ module Dry
   module Web
     module Roda
       class CLI < Thor
-        desc "new APP", "Generate a new dry-web-roda project"
+        desc "new APP", "Generate a new dry-web-web_pipe project"
         option :arch, required: false, default: "umbrella", enum: %w[umbrella flat], banner: "ARCH", desc: "Project architecture (umbrella/flat)"
         def new(app_name)
           case options[:arch]
@@ -17,7 +17,7 @@ module Dry
           end
         end
 
-        desc "generate GENERATOR", "Generate a new component for an existing dry-web-roda project"
+        desc "generate GENERATOR", "Generate a new component for an existing dry-web-web_pipe project"
         require "dry/web/roda/cli/generate"
         subcommand "generate", CLI::Generate
       end

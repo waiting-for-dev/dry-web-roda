@@ -16,7 +16,7 @@ module RSpec
           create_project name, args
 
           within_project_directory(name) do
-            setup_gemfile gems: ["'dry-web-roda', path: '#{root}'"], exclude_gems: ['dry-web-roda']
+            setup_gemfile gems: ["'dry-web-web_pipe', path: '#{root}'"], exclude_gems: ['dry-web-web_pipe']
             bundle_install
             yield
           end
@@ -39,7 +39,7 @@ module RSpec
       end
 
       def create_project(name, args)
-        silently "dry-web-roda new #{name} #{_create_project_args(args)}"
+        silently "dry-web-web_pipe new #{name} #{_create_project_args(args)}"
       end
 
       def _create_project_args(args)

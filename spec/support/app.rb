@@ -28,7 +28,7 @@ module RSpec
 
       def run_app(host: "0.0.0.0", port: "30333", timeout: 10)
         cmd = "bundle exec rackup -o 0.0.0.0 -p #{port} config.ru"
-        out = Tempfile.new("dry-web-roda-out")
+        out = Tempfile.new("dry-web-web_pipe-out")
 
         pid = fork {
           Bundler.with_clean_env do

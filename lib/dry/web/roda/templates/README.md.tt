@@ -1,6 +1,6 @@
 # <%= config[:camel_cased_app_name] %>
 
-Welcome! You’ve generated an app using dry-web-roda.
+Welcome! You’ve generated an app using dry-web-web_pipe.
 
 ## First steps
 
