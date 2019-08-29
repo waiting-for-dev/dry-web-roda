@@ -1,10 +1,10 @@
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "dry/web/roda/version"
+require "dry/web/web_pipe/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "dry-web-web_pipe"
-  spec.version       = Dry::Web::Roda::VERSION
+  spec.version       = Dry::Web::WebPipe::VERSION
   spec.authors       = ["Piotr Solnica"]
   spec.email         = ["piotr.solnica@gmail.com"]
   spec.summary       = "web_pipe integration for dry-web apps"

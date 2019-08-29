@@ -1,9 +1,9 @@
-require "dry/web/roda/generate"
-require "dry/web/roda/generators/inflections"
+require "dry/web/web_pipe/generate"
+require "dry/web/web_pipe/generators/inflections"
 
 module Dry
   module Web
-    module Roda
+    module WebPipe
       module Generators
         class AbstractGenerator
           attr_reader :target_dir, :options

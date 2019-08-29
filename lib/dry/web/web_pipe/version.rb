@@ -1,6 +1,6 @@
 module Dry
   module Web
-    module Roda
+    module WebPipe
       VERSION = "0.12.0".freeze
     end
   end

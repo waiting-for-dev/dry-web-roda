@@ -1,10 +1,10 @@
 require "securerandom"
-require "dry/web/roda/generators/abstract_project"
-require "dry/web/roda/generators/sub_app"
+require "dry/web/web_pipe/generators/abstract_project"
+require "dry/web/web_pipe/generators/sub_app"
 
 module Dry
   module Web
-    module Roda
+    module WebPipe
       module Generators
         class UmbrellaProject < AbstractProject
           private

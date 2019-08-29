@@ -1,8 +1,8 @@
-require "dry/web/roda/application"
+require "dry/web/web_pipe/application"
 require_relative "container"
 
 module <%= config[:camel_cased_app_name] %>
-  class Web < Dry::Web::Roda::Application
+  class Web < Dry::Web::WebPipe::Application
     configure do |config|
       config.container = Container
       config.routes = "web/routes".freeze

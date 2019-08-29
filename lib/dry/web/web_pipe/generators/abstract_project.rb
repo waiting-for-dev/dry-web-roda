@@ -1,9 +1,9 @@
 require "securerandom"
-require "dry/web/roda/generators/abstract_generator"
+require "dry/web/web_pipe/generators/abstract_generator"
 
 module Dry
   module Web
-    module Roda
+    module WebPipe
       module Generators
         class AbstractProject < AbstractGenerator
           def populate_templates
@@ -103,7 +103,7 @@ module Dry
           end
 
           def add_config_files
-            add_template('.gitignore', '.gitignore')
+            add_template('.gitignore.tt', '.gitignore')
             add_template('Gemfile', 'Gemfile')
             add_template('Rakefile.tt', 'Rakefile')
             add_template('config.ru.tt', 'config.ru')

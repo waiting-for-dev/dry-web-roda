@@ -1,8 +1,8 @@
-require "dry/web/roda/generators/abstract_generator"
+require "dry/web/web_pipe/generators/abstract_generator"
 
 module Dry
   module Web
-    module Roda
+    module WebPipe
       module Generators
         class SubApp < AbstractGenerator
           def populate_templates

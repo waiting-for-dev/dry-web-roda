@@ -2,7 +2,7 @@ require "inflecto"
 
 module Dry
   module Web
-    module Roda
+    module WebPipe
       module Generators
         module Inflections
           module_function

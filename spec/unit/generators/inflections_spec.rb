@@ -1,6 +1,6 @@
-require "dry/web/roda/generators/inflections"
+require "dry/web/web_pipe/generators/inflections"
 
-RSpec.describe Dry::Web::Roda::Generators::Inflections do
+RSpec.describe Dry::Web::WebPipe::Generators::Inflections do
   subject(:inflections) { described_class }
 
   describe ".underscored_name" do

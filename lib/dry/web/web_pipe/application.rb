@@ -4,7 +4,7 @@ require "dry-configurable"
 
 module Dry
   module Web
-    module Roda
+    module WebPipe
       class Application < ::Roda
         extend Dry::Configurable
 

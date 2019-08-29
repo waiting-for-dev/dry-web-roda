@@ -3,7 +3,7 @@ require "thor"
 
 module Dry
   module Web
-    module Roda
+    module WebPipe
       class Generate
         TEMPLATES_DIR = "templates".freeze
         SOURCE_DIR = Pathname(__FILE__).dirname.join(TEMPLATES_DIR)

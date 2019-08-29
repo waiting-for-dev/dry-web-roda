@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
-require "dry/web/roda/cli"
+require "dry/web/web_pipe/cli"
 
-Dry::Web::Roda::CLI.start ARGV
+Dry::Web::WebPipe::CLI.start ARGV
