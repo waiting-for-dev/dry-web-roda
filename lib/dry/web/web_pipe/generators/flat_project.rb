@@ -22,7 +22,7 @@ module Dry
           end
 
           def add_application
-            add_template("flat_project/router.rb.tt", "lib/#{underscored_project_name}/router.rb")
+            add_template("flat_project/router.rb.tt", "system/#{underscored_project_name}/router.rb")
           end
 
           def add_views

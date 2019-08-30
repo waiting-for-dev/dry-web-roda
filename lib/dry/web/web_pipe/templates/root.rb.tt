@@ -8,8 +8,8 @@ module <%= config[:camel_cased_app_name] %>
 
       compose :web, Web.new
 
-      plug(:render) do |conn|
-        conn.set_response_body('<html><body><h1>Welcome to dry-web-web_pipe!</h1></body></html>')
+      plug(:view) do |conn|
+        conn.view('views.welcome')
       end
     end
   end

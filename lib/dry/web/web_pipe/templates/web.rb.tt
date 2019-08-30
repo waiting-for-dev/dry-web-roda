@@ -1,8 +1,52 @@
 require "web_pipe"
+require 'web_pipe/plugs/content_type'
+require "web_pipe/plugs/config"
+require "rack/csrf"
+require "rack/session/cookie"
+require 'rack-flash'
 require "<%= config[:underscored_project_name] %>/container"
+
+WebPipe.load_extensions(
+  :container,
+  :cookies,
+  :flash,
+  :dry_schema,
+  :dry_view,
+  :params,
+  :redirect,
+  :router_params,
+  :session,
+  :url
+)
 
 module <%= config[:camel_cased_app_name] %>
   class Web
     include WebPipe
+
+    use :cookies, ::Rack::Session::Cookie, key: "<%= config[:underscored_project_name] %>.session", secret: Container["settings"].session_secret
+    use :csrf, ::Rack::Csrf, raise: true
+    use :flash, ::Rack::Flash
+
+    plug :config, WebPipe::Plugs::Config.(
+      container: Container,
+
+      view_context: lambda do |conn|
+        {
+          flash: conn.flash,
+          csrf_token: ::Rack::Csrf.token(conn.env),
+          csrf_metatag: ::Rack::Csrf.metatag(conn.env),
+          csrf_tag: ::Rack::Csrf.tag(conn.env)
+        }
+      end,
+
+      sanitization_handler: lambda do |conn, result|
+        conn.
+          set_status(500).
+          set_response_body("Params #{conn.params} do not conform with the schema: #{result.errors.inspect}").
+          halt
+      end
+    )
+
+    plug :content_type, WebPipe::Plugs::ContentType.('text/html')
   end
 end
