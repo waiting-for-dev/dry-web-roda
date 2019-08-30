@@ -5,8 +5,8 @@ require "dry/web/web_pipe/version"
 Gem::Specification.new do |spec|
   spec.name          = "dry-web-web_pipe"
   spec.version       = Dry::Web::WebPipe::VERSION
-  spec.authors       = ["Piotr Solnica"]
-  spec.email         = ["piotr.solnica@gmail.com"]
+  spec.authors       = ["Marc Busqué"]
+  spec.email         = ["waiting-for-dev@lamarciana.com"]
   spec.summary       = "web_pipe integration for dry-web apps"
   spec.description   = spec.summary
   spec.homepage      = "https://github.com/waiting-for-dev/dry-web-web_pipe"
