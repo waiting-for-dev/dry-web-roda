@@ -1,7 +1,0 @@
-# Define your routes like this:
-#
-# class <%= config[:camel_cased_umbrella_name] %>::<%= config[:camel_cased_app_name] %>::Web
-#   route "example" do |r|
-#     # Routes go here
-#   end
-# end
