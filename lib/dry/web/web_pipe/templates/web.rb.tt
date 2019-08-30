@@ -1,0 +1,8 @@
+require "web_pipe"
+require "<%= config[:underscored_project_name] %>/container"
+
+module <%= config[:camel_cased_app_name] %>
+  class Web
+    include WebPipe
+  end
+end

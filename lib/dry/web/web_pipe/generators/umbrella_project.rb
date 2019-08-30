@@ -14,6 +14,7 @@ module Dry
           end
 
           def add_application
+            add_template('config.ru.tt', 'config.ru')
             add_template("umbrella_project/web.rb.tt", "system/#{underscored_project_name}/web.rb")
           end
 

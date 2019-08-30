@@ -1,0 +1,8 @@
+require "hanami/router"
+require "<%= config[:underscored_project_name] %>/actions/root"
+
+module <%= config[:camel_cased_app_name] %>
+  ROUTER = Hanami::Router.new do
+    root to: <%= config[:camel_cased_app_name] %>::Actions::Root.new
+  end
+end

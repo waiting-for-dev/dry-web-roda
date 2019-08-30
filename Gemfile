@@ -7,6 +7,8 @@ gem 'byebug', platform: :mri
 gem 'codeclimate-test-reporter', platform: :rbx
 
 # Generated application dependencies
+gem "hanami-router", "~> 1.3"
+gem "web_pipe", "~> 0.7"
 gem "puma"
 gem "rack_csrf"
 gem "rerun"
