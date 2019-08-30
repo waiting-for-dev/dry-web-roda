@@ -23,9 +23,9 @@ module <%= config[:camel_cased_app_name] %>
   class Web
     include WebPipe
 
-    use :cookies, ::Rack::Session::Cookie, key: "<%= config[:underscored_project_name] %>.session", secret: Container["settings"].session_secret
-    use :csrf, ::Rack::Csrf, raise: true
-    use :flash, ::Rack::Flash
+    use :cookies, Rack::Session::Cookie, key: "<%= config[:underscored_project_name] %>.session", secret: Container["settings"].session_secret
+    use :csrf, Rack::Csrf, raise: true
+    use :flash, Rack::Flash
 
     plug :config, WebPipe::Plugs::Config.(
       container: Container,
@@ -33,9 +33,9 @@ module <%= config[:camel_cased_app_name] %>
       view_context: lambda do |conn|
         {
           flash: conn.flash,
-          csrf_token: ::Rack::Csrf.token(conn.env),
-          csrf_metatag: ::Rack::Csrf.metatag(conn.env),
-          csrf_tag: ::Rack::Csrf.tag(conn.env)
+          csrf_token: Rack::Csrf.token(conn.env),
+          csrf_metatag: Rack::Csrf.metatag(conn.env),
+          csrf_tag: Rack::Csrf.tag(conn.env)
         }
       end,
 
