@@ -1,0 +1,18 @@
+require "web_pipe"
+require "<%= config[:underscored_umbrella_name] %>/<%= config[:underscored_project_name] %>/web"
+
+module <%= config[:camel_cased_umbrella_name] %>
+  module <%= config[:camel_cased_app_name] %>
+    module Actions
+      class Root
+        include WebPipe
+
+        compose :web, Web.new
+
+        plug(:view) do |conn|
+          conn.view('views.welcome')
+        end
+      end
+    end
+  end
+end

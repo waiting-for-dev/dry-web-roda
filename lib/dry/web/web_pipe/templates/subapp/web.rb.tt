@@ -1,46 +1,54 @@
-require "dry/web/web_pipe/application"
-require_relative "container"
+require "web_pipe"
+require 'web_pipe/plugs/content_type'
+require "web_pipe/plugs/config"
+require "rack/csrf"
+require "rack/session/cookie"
+require 'rack-flash'
+require "<%= config[:underscored_umbrella_name] %>/<%= config[:underscored_project_name] %>/container"
+
+WebPipe.load_extensions(
+  :container,
+  :cookies,
+  :flash,
+  :dry_schema,
+  :dry_view,
+  :params,
+  :redirect,
+  :router_params,
+  :session,
+  :url
+)
 
 module <%= config[:camel_cased_umbrella_name] %>
   module <%= config[:camel_cased_app_name] %>
-    class Web < Dry::Web::WebPipe::Application
-      configure do |config|
-        config.container = Container
-        config.routes = "web/routes".freeze
-      end
-
-      opts[:root] = Pathname(__FILE__).join("../../..").realpath.dirname
-
-      use Rack::Session::Cookie, key: "<%= config[:underscored_umbrella_name] %>.<%= config[:underscored_project_name] %>.session", secret: self["core.settings"].session_secret
-      use Rack::MethodOverride
-
-      plugin :csrf, raise: true
-      plugin :dry_view
-      plugin :error_handler
-      plugin :flash
-      plugin :multi_route
-      plugin :all_verbs
-
-      route do |r|
-        # Enable this after writing your first web/routes/ file
-        # r.multi_route
-
-        r.root do
-          r.view :welcome
+    class Web
+      include WebPipe
+  
+      use :cookies, ::Rack::Session::Cookie, key: "<%= config[:underscored_project_name] %>.session", secret: Container["core.settings"].session_secret
+      use :csrf, ::Rack::Csrf, raise: true
+      use :flash, ::Rack::Flash
+  
+      plug :config, WebPipe::Plugs::Config.(
+        container: Container,
+  
+        view_context: lambda do |conn|
+          {
+            flash: conn.flash,
+            csrf_token: ::Rack::Csrf.token(conn.env),
+            csrf_metatag: ::Rack::Csrf.metatag(conn.env),
+            csrf_tag: ::Rack::Csrf.tag(conn.env)
+          }
+        end,
+  
+        sanitization_handler: lambda do |conn, result|
+          conn.
+            set_status(500).
+            set_response_body("Params #{conn.params} do not conform with the schema: #{result.errors.inspect}").
+            halt
         end
-      end
-
-      # Request-specific options for dry-view context object
-      def view_context_options
-        {
-          flash:        flash,
-          csrf_token:   Rack::Csrf.token(request.env),
-          csrf_metatag: Rack::Csrf.metatag(request.env),
-          csrf_tag:     Rack::Csrf.tag(request.env),
-        }
-      end
-
-      load_routes!
+      )
+  
+      plug :content_type, WebPipe::Plugs::ContentType.('text/html')
     end
   end
 end

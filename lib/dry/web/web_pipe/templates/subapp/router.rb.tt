@@ -1,0 +1,10 @@
+require "hanami/router"
+require_relative "container"
+
+module <%= config[:camel_cased_umbrella_name] %>
+  module <%= config[:camel_cased_app_name] %>
+    ROUTER = Hanami::Router.new do
+      root to: Container["actions.root"]
+    end
+  end
+end

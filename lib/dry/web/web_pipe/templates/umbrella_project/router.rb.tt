@@ -1,0 +1,18 @@
+require "hanami/router"
+require "dry/web/web_pipe/generators/inflections"
+require "<%= config[:underscored_project_name] %>/container"
+
+module <%= config[:camel_cased_app_name] %>
+  ROUTER = Hanami::Router.new do
+    # Mount sub-apps routers within namespaces
+    Dir.children(Container.root.to_s + '/apps/').each do |app|
+      require_relative "../../apps/#{app}/system/<%= config[:underscored_project_name] %>/#{app}/router"
+
+      router = <%= config[:camel_cased_app_name] %>.const_get(
+        Dry::Web::WebPipe::Generators::Inflections.camel_cased_name(app) + '::ROUTER'
+      )
+
+      mount router, at: app
+    end
+  end
+end

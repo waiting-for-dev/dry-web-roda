@@ -8,8 +8,6 @@ module Dry
         class FlatProject < AbstractProject
           def populate_templates
             super
-            # Provisional, as it is going to be shared by all generators
-            add_template("flat_project/config.ru.tt", "config.ru")
             add_views
             add_actions
             add_web
@@ -30,8 +28,8 @@ module Dry
           end
 
           def add_actions
-            add_template('web.rb.tt', "lib/#{underscored_project_name}/web.rb")
-            add_template('root.rb.tt', "lib/#{underscored_project_name}/actions/root.rb")
+            add_template('flat_project/web.rb.tt', "lib/#{underscored_project_name}/web.rb")
+            add_template('flat_project/root.rb.tt', "lib/#{underscored_project_name}/actions/root.rb")
           end
 
           def add_web

@@ -34,13 +34,15 @@ module Dry
           end
 
           def add_lib
+            add_template('subapp/web.rb.tt', "#{lib_path}/web.rb")
+            add_template('subapp/root.rb.tt', "#{lib_path}/actions/root.rb")
             add_template('subapp/view_context.rb.tt', "#{lib_path}/view_context.rb")
             add_template('subapp/view.rb.tt', "#{lib_path}/view.rb")
             add_template('subapp/welcome.rb.tt', "#{lib_path}/views/welcome.rb")
           end
 
           def add_system
-            add_template('subapp/web.rb.tt', "#{system_lib_path}/web.rb")
+            add_template("subapp/router.rb.tt", "#{system_lib_path}/router.rb")
             add_template('subapp/container.rb.tt', "#{system_lib_path}/container.rb")
             add_template('subapp/import.rb.tt', "#{system_lib_path}/import.rb")
             add_template('subapp/boot.rb.tt', 'system/boot.rb')
