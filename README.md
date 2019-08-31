@@ -42,13 +42,20 @@ subapp routers, which are in
 
 Remember to update main router when adding new sub-apps.
 
-web_pipe actions go to `apps/<your_sub_app_name>/lib/<your_project_name>/<your_sub_app_name>/actions/`
+web_pipe actions go to
+`apps/<your_sub_app_name>/lib/<your_project_name>/<your_sub_app_name>/actions/`
+
+As a base `web_pipe` to be composed there is
+`apps/<your_sub_app_name>/lib/<your_project_name>/<your_sub_app_name>/web.rb`.
 
 ### Flat projects
 
 Hanami router goes to `system/<your_project_name>/router.rb`.
 
 web_pipe actions go to `lib/<your_project_name>/actions/`.
+
+As a base `web_pipe` to be composed there is
+`apps/<your_project_name>/lib/web.rb`.
 
 ## LICENSE
 
