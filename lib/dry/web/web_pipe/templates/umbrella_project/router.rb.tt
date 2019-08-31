@@ -1,5 +1,5 @@
 require "hanami/router"
-require_relative "../../apps/main/system/<%= config[:underscored_project_name] %>/main/router"
+require "<%= config[:underscored_project_name] %>/main/router"
 
 module <%= config[:camel_cased_app_name] %>
   ROUTER = Hanami::Router.new do
