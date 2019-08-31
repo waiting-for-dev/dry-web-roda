@@ -1,3 +1,27 @@
+# Change Log
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](http://keepachangelog.com/)
+and this project adheres to [Semantic Versioning](http://semver.org/).
+
+# Unreleased
+
+[dry-web-roda project](https://github.com/dry-rb/dry-web-roda) has been forked
+into this repository. For this first version, only the minimal changes to adapt
+it for `web_pipe` has been made:
+
+- Generate skeleton using `web_pipe` for the controller layer for both flat and
+  umbrella arquitectures.
+- Generate skeleton using `hanami-router` for the router layer for both flat
+  and umbrella arquitectures.
+- Update dependencies to meet `web_pipe` requirements.
+
+Besides, ruby 2.3 support has been dropped.
+
+### Added
+
+# FORKED AS dry-web-we_pipe
+
 # 0.12.0 - 2019-04-16
 
 ### Changed
