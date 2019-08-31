@@ -1,5 +1,4 @@
 require "hanami/router"
-require "dry/web/web_pipe/generators/inflections"
 require_relative "../../apps/main/system/<%= config[:underscored_project_name] %>/main/router"
 
 module <%= config[:camel_cased_app_name] %>
