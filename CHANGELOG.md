@@ -4,7 +4,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-# Unreleased
+# 0.2.0
+
+Keep fork updated against dry-web-roda 0.13.1
+
+## Fixed
+
+* dry-monitor for rom is correctly configured in the generated boot file (@mlk-yozu)
+
+## Changed
+
+* Updated generated Gemfile to use the latest dry-* and rom-* gems (@solnic)
+* Fixed dry-types warning from the generated `types.rb` (@solnic)
+* Removed `inflecto` in favor of `dry-inflector` (@solnic)
+
+# 0.1.0
 
 [dry-web-roda project](https://github.com/dry-rb/dry-web-roda) has been forked
 into this repository. For this first version, only the minimal changes to adapt
